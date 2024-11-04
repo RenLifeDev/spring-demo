@@ -1,0 +1,42 @@
+package com.renlife.cloud.demo.web.action;
+
+import com.renlife.cloud.demo.client.CatFactClient;
+import com.renlife.cloud.demo.client.dto.CatFactResponseDto;
+import com.renlife.cloud.demo.web.dto.ProductGroupDto;
+import com.renlife.cloud.demo.service.FactorialService;
+import com.renlife.cloud.demo.service.ProductService;
+import jakarta.validation.constraints.NotBlank;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController // TODO убрать аннотацию чтобы не работали запросы
+@RequiredArgsConstructor
+public class DemoAction {
+
+    private final FactorialService factorialService;
+
+    private final CatFactClient catFactClient;
+
+    private final ProductService productService;
+
+    @GetMapping({"/public/v1/factorial/{num}"})
+    public String getFactorial(@NotBlank @PathVariable String num) {
+        return "Факториал числа %s равен %d"
+                .formatted(num, factorialService.calculate(Integer.parseInt(num)));
+    }
+
+    @PostMapping({"/api/v1/fact"})
+    public CatFactResponseDto getFact() { // TODO переделать в String чтобы сломать компайл
+        return catFactClient.getFact();
+    }
+
+    @GetMapping({"/api/v1/products"})
+    public List<ProductGroupDto> getProducts() { // TODO переделать на void чтобы ничего не возвращалось
+        return productService.getAllProductGroups();
+    }
+}
