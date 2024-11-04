@@ -3,7 +3,6 @@ package com.renlife.cloud.demo.service;
 import com.renlife.cloud.demo.mapper.ProductGroupMapper;
 import com.renlife.cloud.demo.persistence.repository.ProductGroupRepository;
 import com.renlife.cloud.demo.web.dto.ProductGroupDto;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +14,6 @@ public class ProductService {
 
     private final ProductGroupRepository repository;
 
-    @Transactional // TODO убрать транзакцию чтобы LAZY
     public List<ProductGroupDto> getAllProductGroups() {
         return ProductGroupMapper.INSTANCE.toModelList(repository.findAll());
     }

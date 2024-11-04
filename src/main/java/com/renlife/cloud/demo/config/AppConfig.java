@@ -15,8 +15,7 @@ public class AppConfig {
     public UserDetailsService userDetailsService(PasswordEncoder encoder) {
         UserDetails user = User.withUsername("user")
                 .password(encoder.encode("password"))
-//                .roles("UNKNOWN") // TODO вызывает 403
-                .roles("USER")
+                .roles("UNKNOWN")
                 .build();
 
         return new InMemoryUserDetailsManager(user);

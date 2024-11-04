@@ -6,5 +6,5 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class CatFactResponseDto {
-    private String fact; // TODO переименовать в facts чтобы сломался маппинг
+    private String facts;
 }

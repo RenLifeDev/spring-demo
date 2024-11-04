@@ -1,21 +1,14 @@
 package com.renlife.cloud.demo.client;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.renlife.cloud.demo.client.dto.CatFactResponseDto;
-import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
 class CatFactClientTest {
@@ -46,23 +39,8 @@ class CatFactClientTest {
         client = new CatFactClient(webClient);
     }
 
-    @Test // TODO должен написать что то такое
-    void test() throws InterruptedException, JsonProcessingException {
-        var dto = new CatFactResponseDto()
-                .setFact("Fact");
+    @Test
+    void test() {
 
-        mockWebServer.enqueue(new MockResponse()
-                .addHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                .setBody(objectMapper.writeValueAsString(dto))
-        );
-
-        // When
-        var fact = client.getFact();
-
-        // Then
-        var request = mockWebServer.takeRequest();
-
-        assertThat(request.getMethod()).isEqualTo("GET");
-        assertThat(objectMapper.writeValueAsString(fact)).isEqualTo("{\"fact\":\"Fact\"}");
     }
 }
