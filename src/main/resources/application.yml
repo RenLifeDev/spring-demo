@@ -9,7 +9,7 @@ logging:
     reactor:
       netty:
         http:
-          client: DEBUG
+          client: INFO
     org:
       springframework: INFO
     root: INFO

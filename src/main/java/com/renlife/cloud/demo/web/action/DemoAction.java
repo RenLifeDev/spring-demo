@@ -2,6 +2,7 @@ package com.renlife.cloud.demo.web.action;
 
 import com.renlife.cloud.demo.client.CatFactClient;
 import com.renlife.cloud.demo.client.dto.CatFactResponseDto;
+import com.renlife.cloud.demo.exception.BadRequestException;
 import com.renlife.cloud.demo.service.FactorialService;
 import com.renlife.cloud.demo.service.ProductService;
 import jakarta.validation.constraints.NotBlank;
@@ -21,8 +22,13 @@ public class DemoAction {
 
     @GetMapping({"/public/v1/factorial/{num}"})
     public String getFactorial(@NotBlank @PathVariable String num) {
+        var i = Integer.parseInt(num);
+        if (i > 15) {
+            throw new BadRequestException("Много! Давай меньше");
+        }
+
         return "Факториал числа %s равен %d"
-                .formatted(num, factorialService.calculate(Integer.parseInt(num)));
+                .formatted(num, factorialService.calculate(i));
     }
 
     @PostMapping({"/api/v1/fact"})

@@ -19,6 +19,12 @@
 
          java -jar build/libs/renlife_demo-0.0.1-SNAPSHOT.jar
 
+## Test
+
+1. Run tests
+        
+        ./gradlew test
+
 ### URLs
 1. GET  http://localhost:8089/public/v1/factorial/{num}
 2. POST http://localhost:8089/api/v1/fact
