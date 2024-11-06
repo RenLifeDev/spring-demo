@@ -4,20 +4,44 @@ import com.renlife.cloud.demo.persistence.entity.ProductEntity;
 import com.renlife.cloud.demo.persistence.entity.ProductGroupEntity;
 import com.renlife.cloud.demo.web.dto.ProductDto;
 import com.renlife.cloud.demo.web.dto.ProductGroupDto;
-import org.mapstruct.Mapper;
-import org.mapstruct.ReportingPolicy;
-import org.mapstruct.factory.Mappers;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.ERROR)
-public interface ProductGroupMapper {
+@Service
+public class ProductGroupMapper {
 
-    ProductGroupMapper INSTANCE = Mappers.getMapper(ProductGroupMapper.class);
+    public List<ProductGroupDto> toModelList(List<ProductGroupEntity> all) {
+        List<ProductGroupDto> list = new ArrayList<>(all.size());
+        for (ProductGroupEntity productGroupEntity : all) {
+            list.add(productGroupEntityToProductGroupDto(productGroupEntity));
+        }
 
-    List<ProductGroupDto> toModelList(List<ProductGroupEntity> all);
+        return list;
+    }
 
-    List<ProductDto> toProducts(List<ProductEntity> entity);
+    public List<ProductDto> toProducts(List<ProductEntity> entity) {
+        List<ProductDto> list = new ArrayList<>(entity.size());
+        for (ProductEntity productEntity : entity) {
+            list.add(toProduct(productEntity));
+        }
 
-    ProductDto toProduct(ProductEntity entity);
+        return list;
+    }
+
+    public ProductDto toProduct(ProductEntity entity) {
+
+        return new ProductDto()
+                .setId(entity.getId())
+                .setName(entity.getName());
+    }
+
+    private ProductGroupDto productGroupEntityToProductGroupDto(ProductGroupEntity productGroupEntity) {
+
+        return new ProductGroupDto()
+                .setId(productGroupEntity.getId())
+                .setName(productGroupEntity.getName())
+                .setProducts(toProducts(productGroupEntity.getProducts()));
+    }
 }

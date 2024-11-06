@@ -22,7 +22,6 @@ public class ProductGroupEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Nullable
     @Comment("Название продукта")
     @Column(length = 128)
     private String name;

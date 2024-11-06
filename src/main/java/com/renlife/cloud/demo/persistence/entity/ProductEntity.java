@@ -6,7 +6,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.Comment;
-import org.springframework.lang.Nullable;
 
 @Data
 @Accessors(chain = true)
@@ -20,7 +19,6 @@ public class ProductEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Nullable
     @Comment("Название продукта")
     @Column(length = 128)
     private String name;

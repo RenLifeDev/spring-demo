@@ -12,11 +12,15 @@ public class CatFactClient {
     private final WebClient client;
 
     public CatFactResponseDto getFact() {
-        var fact = client.get()
+        return getCatFactResponse();
+    }
+
+    private String getCatFactResponse() {
+        var response = client.get()
                 .retrieve()
                 .bodyToMono(CatFactResponseDto.class)
                 .block();
 
-        return Objects.requireNonNull(fact);
+        return Objects.requireNonNull(response);
     }
 }

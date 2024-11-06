@@ -14,7 +14,9 @@ public class ProductService {
 
     private final ProductGroupRepository repository;
 
+    private final ProductGroupMapper mapper;
+
     public List<ProductGroupDto> getAllProductGroups() {
-        return ProductGroupMapper.INSTANCE.toModelList(repository.findAll());
+        return mapper.toModelList(repository.findAll());
     }
 }

@@ -1,6 +1,7 @@
 package com.renlife.cloud.demo.web.action;
 
 import com.renlife.cloud.demo.client.CatFactClient;
+import com.renlife.cloud.demo.client.dto.CatFactResponseDto;
 import com.renlife.cloud.demo.service.FactorialService;
 import com.renlife.cloud.demo.service.ProductService;
 import jakarta.validation.constraints.NotBlank;
@@ -25,7 +26,7 @@ public class DemoAction {
     }
 
     @PostMapping({"/api/v1/fact"})
-    public String getFact() {
+    public CatFactResponseDto getFact() {
         return catFactClient.getFact();
     }
 
