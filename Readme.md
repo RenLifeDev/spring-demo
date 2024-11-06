@@ -15,14 +15,18 @@
 
         docker-compose up -d
         
-3. Run application jar
+3. Run application. Option 1
 
-         java -jar build/libs/renlife_demo-0.0.1-SNAPSHOT.jar
+       ./gradlew bootRun
+         
+4. Run application. Option 2
+ 
+       java -jar build/libs/renlife_demo-0.0.1-SNAPSHOT.jar
 
 ## Test
 
 1. Run tests
-        
+         
         ./gradlew test
 
 ### URLs
