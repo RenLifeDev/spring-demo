@@ -1,8 +1,5 @@
 ## Migrations
-1. Diff
-
-        ./gradlew diffChangeLog  
-2. Apply
+1. Apply
 
         ./gradlew update
 
