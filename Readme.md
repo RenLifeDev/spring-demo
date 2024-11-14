@@ -15,7 +15,7 @@
 ![img_1.png](img_1.png)
 ![img_4.png](img_4.png)
 
-## Start application
+## Start application. Option 1
 1. Docker compose up
 
         docker-compose up -d
@@ -25,6 +25,17 @@
 3. Apply migrations
 
         ./gradlew update
+
+## Start application. Option 2. Gradle plugin 
+1. Docker compose up
+
+        docker-compose up -d
+2. Build application jar
+
+        Open gradle plugin -> build -> build (run build configuration)
+3. Apply migrations
+
+        Open gradle plugin -> liquibase -> update (run update configuration)
 
 ## Test
 
