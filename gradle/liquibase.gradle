@@ -8,7 +8,7 @@ if (!project.hasProperty('runList')) {
 
 ext {
     diffChangelogFile = 'src/main/resources/db/changelog/' + new Date().format('yyyyMMddHHmmss') + '_changelog.yml'
-    baseUrl = 'jdbc:postgresql://localhost:5433/renlife_demo'
+    baseUrl = 'jdbc:postgresql://localhost:5432/renlife_demo'
     baseUsername = 'docker'
     basePassword = 'docker'
     baseDriver = 'org.postgresql.Driver'

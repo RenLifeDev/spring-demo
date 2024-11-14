@@ -6,15 +6,13 @@ server:
 
 logging:
   level:
-    reactor:
-      netty:
-        http:
-          client: INFO
     org:
       springframework: INFO
     root: INFO
 
 spring:
+  profiles:
+    default: default
   main:
     banner-mode: "off"
   application:
@@ -35,7 +33,6 @@ spring:
       ddl-auto: none
       boot:
         allow_jdbc_metadata_access: false
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
     open-in-view: false
     show-sql: false
     properties:
